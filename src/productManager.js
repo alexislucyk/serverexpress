@@ -10,7 +10,7 @@ export default class ProductManager{
     async addProduct(product){
         try {
             const actualProd = await this.getProducts();
-            actualProd.push(product);
+            //actualProd.push(product);
 
             await fs.promises.writeFile(
                 './products.json',
@@ -23,8 +23,8 @@ export default class ProductManager{
 
     async getProducts(){
         try {
-            const actualProd= await fs.promises.readFile(
-                './products.json'
+            const actualProd = await fs.promises.readFile(
+                './products.json'                
             );
             return JSON.parse(actualProd);
         } catch (error) {
@@ -37,6 +37,7 @@ export default class ProductManager{
 const products = new ProductManager();
 
 const test = async () =>{
+    
     try {
         await products.addProduct({
             nombre: 'Balde plastico',
@@ -54,7 +55,7 @@ const test = async () =>{
 
         console.log(await products.getProducts());
     } catch (error) {
-        console.log('Worng Test');
+        console.log(error);
     }
 };
 
