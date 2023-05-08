@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/products.json', async (req, res) => {
 
-    //let productList = await pm.getProducts();
+    let productList = await pm.getProducts();
     res.send(pm.getProducts());
 });
 

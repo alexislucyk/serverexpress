@@ -10,8 +10,7 @@ export default class ProductManager{
     async addProduct(product){
         try {
             const actualProd = await this.getProducts();
-            //actualProd.push(product);
-
+            actualProd.push(product);
             await fs.promises.writeFile(
                 './products.json',
                 JSON.stringify(actualProd)
@@ -39,20 +38,7 @@ const products = new ProductManager();
 const test = async () =>{
     
     try {
-        await products.addProduct({
-            nombre: 'Balde plastico',
-            rubro: 'Construccion',
-            stock: 5,
-            precio: 20,
-        })
-
-        await products.addProduct({
-            nombre: 'Cable unipolar',
-            rubro: 'Electricidad',
-            stock: 15,
-            precio: 6,
-        })
-
+       
         console.log(await products.getProducts());
     } catch (error) {
         console.log(error);
